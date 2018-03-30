@@ -1,4 +1,4 @@
-# tensorflow_reading data
+# tensorflow reading_data
 this is an example about how to reading data using tensorflow
 there are two ways to read data,
 1.using the string_input_producer api and Coordinator queue constructor
