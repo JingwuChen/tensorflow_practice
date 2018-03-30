@@ -19,3 +19,4 @@ with tf.Session() as sess:
     sess.run(iterator.initializer, feed_dict={filenames: training_filenames})
     for _ in range(0,5):
         print(sess.run(next_element))
+#you can batch your dataset elements later
