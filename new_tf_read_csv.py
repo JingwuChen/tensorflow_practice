@@ -1,8 +1,12 @@
 import tensorflow as tf
 import os
+#avoiding the annoying cpu warning
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+#create a placeholder for the file name
 filenames = tf.placeholder(tf.string, shape=[None])
 dataset = tf.data.Dataset.from_tensor_slices(filenames)
+# * Skip the first line (header row).
+# * Filter out lines beginning with "#" (comments).
 dataset = dataset.flat_map(
     lambda filename: (
         tf.data.TextLineDataset(filename)
