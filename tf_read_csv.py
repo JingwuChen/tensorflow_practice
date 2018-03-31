@@ -1,4 +1,5 @@
 import tensorflow as tf
+#if you have a bunch of files, you can use the tf.train.match_filenames_once 
 # filename_queue=tf.train.string_input_producer(
 #     tf.train.match_filenames_once("./*.csv"),shuffle=True)
 filename_queue=tf.train.string_input_producer(["iris.csv",])
