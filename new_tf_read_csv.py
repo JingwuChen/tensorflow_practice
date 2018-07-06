@@ -14,9 +14,12 @@ dataset = dataset.flat_map(
         .filter(lambda line: tf.not_equal(tf.substr(line, 0, 1), "#"))))
 iterator = dataset.make_initializable_iterator()
 next_element = iterator.get_next()
-training_filenames = ["iris.csv"]
+#training_filenames = ["iris.csv"]
+training_filenames=tf.train.match_filenames_once("./*.csv")
+init=(tf.global_variables_initializer(),tf.local_variables_initializer())
 with tf.Session() as sess:
-    sess.run(iterator.initializer, feed_dict={filenames: training_filenames})
+    sess.run(init)
+    sess.run(iterator.initializer, feed_dict={filenames: sess.run(training_filenames)})
     for _ in range(0,5):
         print(sess.run(next_element))
 #you can batch your dataset elements later
